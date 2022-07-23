@@ -10,11 +10,11 @@ import Token.Token;
 
 class Main {
     public static void printCarDetails(CarDetails car){
-        System.out.println("Name: " + car.getOwnerName());
-        System.out.println("Car No: " + car.getCarNo());
-        System.out.println("Car Model: " + car.getCarModel() + "\n");
-        System.out.println("Residence: " + car.getOwnerAddress());
-        System.out.println("Contact No: " + car.getOwnerMobileNo());
+        System.out.println("Name        : " + car.getOwnerName());
+        System.out.println("Car No      : " + car.getCarNo());
+        System.out.println("Car Model   : " + car.getCarModel());
+        System.out.println("Residence   : " + car.getOwnerAddress());
+        System.out.println("Contact No  : " + car.getOwnerMobileNo());
     }
 
     public static void printTokenDetails(Token token){
@@ -42,7 +42,8 @@ class Main {
             System.out.println("3. I would like to retrive my car. I don't have token with me.");
             System.out.println("4. Show me info of all available parking lots.");
             System.out.println("5. Show me info of all parking lots.");
-            System.out.println("6. Exit \n");
+            System.out.println("6. I would like to get my car location.");
+            System.out.println("7. Exit \n");
 
 
             System.out.print("Select your option : ");
@@ -52,15 +53,15 @@ class Main {
                 case 1:
                     System.out.print("\nPlease enter below information.\n");
                     try {
-                        System.out.print("Name : ");
+                        System.out.print("Name       : ");
                         String ownerName = sc.next();
-                        System.out.print("Car Model : ");
+                        System.out.print("Car Model  : ");
                         String carModel = sc.next();
-                        System.out.print("Car No : ");
+                        System.out.print("Car No     : ");
                         String carNo = sc.next();;
                         System.out.print("Contact No : ");
                         int ownerMobileNo = sc.nextInt();
-                        System.out.print("Residence : ");
+                        System.out.print("Residence  : ");
                         String ownerAddress = sc.next();
 
                         CarDetails car = new CarDetails(ownerName, carModel, carNo, ownerMobileNo, ownerAddress);
@@ -69,15 +70,15 @@ class Main {
                         Token token = p.addNewCar(car);
                         printTokenDetails(token);
                     } catch (NoParkingAvailableException e) {
-                        System.out.println("\n\n NoParkingAvailableException : " + e);
+                        System.out.println("\n NoParkingAvailableException : " + e);
                     }
                     break;
                 case 2:
                     System.out.println("\nPlease enter below information.\n");
                     try {
-                        System.out.print("Floor : ");
+                        System.out.print("Floor      : ");
                         String floor = sc.next();
-                        System.out.print("Section : ");
+                        System.out.print("Section    : ");
                         String section = sc.next();
                         System.out.print("Parking No : ");
                         int parkingNumber = sc.nextInt();
@@ -87,21 +88,21 @@ class Main {
                         System.out.println("\nRemoved car details : \n");
                         printCarDetails(removedCar);
                     } catch (InvalidParkingException e) {
-                        System.out.println("\n\n InvalidParkingException : " + e);
+                        System.out.println("\n InvalidParkingException : " + e);
                     }
                     break;
                 case 3:
                     System.out.println("\nPlease enter below information.\n");
                     try {
-                        System.out.print("Name : ");
+                        System.out.print("Name       : ");
                         String ownerName = sc.next();
-                        System.out.print("Car Model : ");
+                        System.out.print("Car Model  : ");
                         String carModel = sc.next();
-                        System.out.print("Car No : ");
+                        System.out.print("Car No     : ");
                         String carNo = sc.next();;
                         System.out.print("Contact No : ");
                         int ownerMobileNo = sc.nextInt();
-                        System.out.print("Residence : ");
+                        System.out.print("Residence  : ");
                         String ownerAddress = sc.next();
 
                         CarDetails car = new CarDetails(ownerName, carModel, carNo, ownerMobileNo, ownerAddress);
@@ -109,7 +110,7 @@ class Main {
                         System.out.println("\nRemoved car details : \n");
                         printCarDetails(removedCar);
                     } catch (InvalidParkingException e) {
-                        System.out.println("\n\n InvalidParkingException : " + e);
+                        System.out.println("\n InvalidParkingException : " + e);
                     }
                     break;
                 case 4:
@@ -121,7 +122,7 @@ class Main {
                             printParkingLotDetails(parkingLotsList.get(i));
                         }
                     } catch (NoParkingAvailableException e) {
-                        System.out.println("\n\n NoParkingAvailableException : " + e);
+                        System.out.println("\n NoParkingAvailableException : " + e);
                     }
                     break;
                 case 5:
@@ -133,6 +134,28 @@ class Main {
                     }
                     break;
                 case 6:
+                    System.out.println("\nPlease enter below information.\n");
+                    try {
+                        System.out.print("Name       : ");
+                        String ownerName = sc.next();
+                        System.out.print("Car Model  : ");
+                        String carModel = sc.next();
+                        System.out.print("Car No     : ");
+                        String carNo = sc.next();;
+                        System.out.print("Contact No : ");
+                        int ownerMobileNo = sc.nextInt();
+                        System.out.print("Residence  : ");
+                        String ownerAddress = sc.next();
+
+                        CarDetails car = new CarDetails(ownerName, carModel, carNo, ownerMobileNo, ownerAddress);
+                        Token token = p.getParkedCarLocation(car);
+                        System.out.println("\nYour car is parked at :");
+                        printTokenDetails(token);
+                    } catch (InvalidParkingException e) {
+                        System.out.println("\n InvalidParkingException : " + e);
+                    }
+                    break;
+                case 7:
                     exitMall = true;
                     break;
             }

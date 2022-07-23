@@ -99,7 +99,7 @@ public class ParkingSystem {
         for(int i=0; i < this.parkingLotList.size(); i++){
             ParkingLot p = this.parkingLotList.get(i);
             CarDetails c = p.getCarDetails();
-            if(isMatchingCarInfo(c, car)){
+            if(c != null && isMatchingCarInfo(c, car)){
                 return p.getToken();
             }
         }
