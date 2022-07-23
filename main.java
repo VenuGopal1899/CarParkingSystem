@@ -10,12 +10,15 @@ import Token.Token;
 
 class Main {
     public static void printCarDetails(CarDetails car){
-        System.out.println("Name: " + car.getOwnerName() + " Contact No: " + car.getOwnerMobileNo() + " Residence: " + car.getOwnerAddress());
-        System.out.println("Car No: " + car.getCarNo() + " Car Model: " + car.getCarModel() + "\n");
+        System.out.println("Name: " + car.getOwnerName());
+        System.out.println("Car No: " + car.getCarNo());
+        System.out.println("Car Model: " + car.getCarModel() + "\n");
+        System.out.println("Residence: " + car.getOwnerAddress());
+        System.out.println("Contact No: " + car.getOwnerMobileNo());
     }
 
     public static void printTokenDetails(Token token){
-        System.out.println("\nFloor: " + token.getFloor() + " Section: " + token.getSection() + " Parking No: " + token.getParkingNumber() + "\n");
+        System.out.println("\nFloor: " + token.getFloor() + " Section: " + token.getSection() + " Parking No: " + token.getParkingNumber());
     }
 
     public static void printParkingLotDetails(ParkingLot p){
@@ -24,7 +27,7 @@ class Main {
         Boolean isAvailable = p.getIsAvailable();
         if(car != null) printCarDetails(car);
         printTokenDetails(token);
-        System.out.println("Available : " + isAvailable + "\n");
+        System.out.println("Available : " + isAvailable);
     }
 
     public static void main(String[] args){
@@ -81,7 +84,7 @@ class Main {
 
                         Token token = new Token(floor, section, parkingNumber);
                         CarDetails removedCar = p.removeCar(token);
-                        System.out.println("Removed car details : \n");
+                        System.out.println("\nRemoved car details : \n");
                         printCarDetails(removedCar);
                     } catch (InvalidParkingException e) {
                         System.out.println("\n\n InvalidParkingException : " + e);
@@ -103,7 +106,7 @@ class Main {
 
                         CarDetails car = new CarDetails(ownerName, carModel, carNo, ownerMobileNo, ownerAddress);
                         CarDetails removedCar = p.removeCar(car);
-                        System.out.println("Removed car details : \n");
+                        System.out.println("\nRemoved car details : \n");
                         printCarDetails(removedCar);
                     } catch (InvalidParkingException e) {
                         System.out.println("\n\n InvalidParkingException : " + e);
@@ -113,7 +116,7 @@ class Main {
                     try {
                         ArrayList<ParkingLot> parkingLotsList = new ArrayList<>();
                         parkingLotsList = p.getAvailableParkingLotList();
-                        System.out.println("\nBelow is the list of available parking lots.\n");
+                        System.out.println("\nBelow is the list of available parking lots : ");
                         for(int i=0; i<parkingLotsList.size(); i++){
                             printParkingLotDetails(parkingLotsList.get(i));
                         }
@@ -124,7 +127,7 @@ class Main {
                 case 5:
                     ArrayList<ParkingLot> parkingLotsList = new ArrayList<>();
                     parkingLotsList = p.getParkingLotList();
-                    System.out.println("\nBelow is the list of parking lots.\n");
+                    System.out.println("\nBelow is the list of parking lots : ");
                     for(int i=0; i<parkingLotsList.size(); i++){
                         printParkingLotDetails(parkingLotsList.get(i));
                     }
